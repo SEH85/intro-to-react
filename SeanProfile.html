@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sean's React Profile</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+    <script type="text/babel">
+
+      class Counter extends React.Component {
+        
+        constructor(props){
+           super(props);
+           this.state = {
+             number: 34
+           }
+         }
+
+        render() {
+          return (
+            <div>
+              <img src={this.props.image} alt="React Logo"/>
+              <h2>Current Profile: {this.props.label}</h2>
+              <h3>Current Age: {this.state.number}</h3>
+              <p>Current Date: {this.props.date.toLocaleDateString()}</p>
+            </div>
+          );
+        }
+      }
+
+      const info = {
+        date: new Date(),
+        image: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+      }
+
+      Counter.defaultProps = {
+        label: "Sean's Profile for React"
+      }
+
+      ReactDOM.render(
+        <Counter
+          date={info.date}
+          image={info.image}/>,document.getElementById('app')
+      );
+
+    </script>
+  </body>
+</html>
